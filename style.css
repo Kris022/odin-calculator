@@ -1,3 +1,59 @@
 body {
-    background-color: blanchedalmond;
+  background-color: blanchedalmond;
 }
+
+.flex-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid red;
+}
+
+.content {
+  /* border: 1px solid lime; */
+}
+
+.calculator {
+  width: 600px;
+  background-color: cornflowerblue;
+  padding: 0.5rem;
+}
+
+.display {
+  height: 3rem;
+  background-color: azure;
+  border: 3px solid violet;
+}
+
+.display p {
+  text-align: end;
+  margin-right: 20px;
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.keyboard {
+    border: 2px solid red;
+    display: flex;
+    flex-direction: column;
+}
+
+.keyboard div {
+    display: flex;
+    justify-content: center;
+}
+
+.keyboard button {
+    margin: 4px;
+    font-size: x-large;
+    padding-inline: 25px;
+    padding-block: 10px;
+    background-color: cornsilk;
+    border: 2px solid palevioletred;
+    border-radius: 10px;
+}
+
+.keyboard button:hover {
+    cursor: pointer;
+} 
