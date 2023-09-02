@@ -1,13 +1,36 @@
+// ctrl + j for console
+// one monkai
+
+let displayString = "";
+
 const numberBtns = document.querySelectorAll("[data-number]");
+const operatorBtns = document.querySelectorAll("[data-operator]");
+
+const clearBtn = document.querySelector(".clearBtn");
+
 const screen = document.querySelector(".screen");
 
-function showOnScreen(str) {
-  screen.innerHTML = str;
+clearBtn.addEventListener("click", clearDisplay);
+
+function updateDisplay(str) {
+  displayString += str;
+  screen.innerHTML = displayString;
 }
+
+function clearDisplay() {
+  displayString = "";
+  updateDisplay(displayString);
+}
+
+operatorBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    displayString += e.target.innerHTML;
+  });
+});
 
 numberBtns.forEach((btn) => {
   btn.addEventListener("click", (e) => {
-    showOnScreen(e.target.innerHTML);
+    updateDisplay(e.target.innerHTML);
   });
 });
 
