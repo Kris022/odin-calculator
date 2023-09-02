@@ -1,6 +1,15 @@
-let numOne;
-let numTwo;
-let operator;
+const numberBtns = document.querySelectorAll("[data-number]");
+const screen = document.querySelector(".screen");
+
+function showOnScreen(str) {
+  screen.innerHTML = str;
+}
+
+numberBtns.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    showOnScreen(e.target.innerHTML);
+  });
+});
 
 function add(numOne, numTwo) {
   return numOne + numTwo;
@@ -37,5 +46,3 @@ function operate(numOne, numTwo, operator) {
 
   return result;
 }
-
-console.log(operate(2, 3, "+"));
