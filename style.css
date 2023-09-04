@@ -47,3 +47,13 @@ body {
   cursor: pointer;
   font-size: 20px;
 }
+
+.buttons button:hover {
+  background-color: cadetblue;
+  transition: ease-in-out;
+  transition-duration: 0.1s;
+}
+
+.buttons button:active {
+  background-color: darkcyan;
+}

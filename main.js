@@ -1,7 +1,6 @@
 class Calculator {
-  constructor(currentDisplayText) {
-    
-    this.currentDisplayText = currentDisplayText;
+  constructor(currentDisplayElement) {
+    this.currentDisplayElement = currentDisplayElement;
     this.clear();
   }
 
@@ -13,15 +12,15 @@ class Calculator {
   delete() {}
 
   appendNumber(number) {
-    this.currentDisplayText = number;
+    this.currentDisplayText = this.currentDisplayText.toString() + number.toString();
   }
 
   chooseOperator(operator) {}
 
-  computeFunction() {}
+  compute() {}
 
   updateDisplay() {
-    this.currentDisplayText.innerText = this.currentDisplayText;
+    this.currentDisplayElement.innerText = this.currentDisplayText;
   }
 }
 
@@ -29,15 +28,20 @@ const numberButtons = document.querySelectorAll("[data-number]");
 const operatorButtons = document.querySelectorAll("[data-operator]");
 const equalsButton = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
+const clearButton = document.querySelector("[data-all-clear]");
 const displayText = document.querySelector(".display");
 
 const calculator = new Calculator(displayText);
 
+
+clearButton.addEventListener("click", () => {
+  calculator.clear();
+  calculator.updateDisplay();
+});
+
 numberButtons.forEach((button) => {
   button.addEventListener("click", () => {
-    console.log(button.innerText)
     calculator.appendNumber(button.innerText);
-    // displayText.innerText = button.innerText
-    calculator.updateDisplay()
+    calculator.updateDisplay();
   });
 });
