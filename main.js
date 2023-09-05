@@ -1,26 +1,34 @@
 class Calculator {
-  constructor(currentDisplayElement) {
-    this.currentDisplayElement = currentDisplayElement;
+  constructor(displayElement) {
+    this.displayElement = displayElement; // Calculator screen
     this.clear();
   }
 
   clear() {
-    this.currentDisplayText = "";
-    this.operator = undefined;
+    this.numOne = "";
+    this.numTwo = "";
+    this.operator = null;
+    this.equation = "";
   }
-
-  delete() {}
 
   appendNumber(number) {
-    this.currentDisplayText = this.currentDisplayText.toString() + number.toString();
+    if (!this.operator) {
+      this.numOne = this.numOne.toString() + number;
+    } else {
+      this.numTwo = this.numTwo.toString() + number;
+    }
+    this.equation = this.equation.toString() + number.toString();
   }
 
-  chooseOperator(operator) {}
-
-  compute() {}
+  appendOperator(operator) {
+    if (this.numOne) {
+      this.operator = operator;
+      this.equation = this.equation.toString() + this.operator.toString();
+    }
+  }
 
   updateDisplay() {
-    this.currentDisplayElement.innerText = this.currentDisplayText;
+    this.displayElement.innerText = this.equation;
   }
 }
 
@@ -29,19 +37,25 @@ const operatorButtons = document.querySelectorAll("[data-operator]");
 const equalsButton = document.querySelector("[data-equals]");
 const deleteButton = document.querySelector("[data-delete]");
 const clearButton = document.querySelector("[data-all-clear]");
-const displayText = document.querySelector(".display");
+const calcDisplay = document.querySelector(".display");
 
-const calculator = new Calculator(displayText);
-
+const calculator = new Calculator(calcDisplay);
 
 clearButton.addEventListener("click", () => {
   calculator.clear();
   calculator.updateDisplay();
 });
 
-numberButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    calculator.appendNumber(button.innerText);
+numberButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    calculator.appendNumber(btn.innerText);
+    calculator.updateDisplay();
+  });
+});
+
+operatorButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    calculator.appendOperator(btn.innerText);
     calculator.updateDisplay();
   });
 });
