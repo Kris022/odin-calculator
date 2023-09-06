@@ -30,6 +30,27 @@ class Calculator {
   updateDisplay() {
     this.displayElement.innerText = this.equation;
   }
+
+  operate() {
+    switch (this.operator) {
+      case "+":
+        return parseFloat(this.numOne) + parseFloat(this.numTwo);
+        break;
+      case "-":
+        return parseFloat(this.numOne) - parseFloat(this.numTwo);
+        break;
+      case "*":
+        return parseFloat(this.numOne) * parseFloat(this.numTwo);
+        break;
+      case "/":
+        return parseFloat(this.numOne) / parseFloat(this.numTwo);
+        break;
+    }
+  }
+
+  getResult() {
+    this.equation = this.operate();
+  }
 }
 
 const numberButtons = document.querySelectorAll("[data-number]");
@@ -58,4 +79,9 @@ operatorButtons.forEach((btn) => {
     calculator.appendOperator(btn.innerText);
     calculator.updateDisplay();
   });
+});
+
+equalsButton.addEventListener("click", () => {
+  calculator.getResult();
+  calculator.updateDisplay();
 });
