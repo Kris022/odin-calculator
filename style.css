@@ -20,6 +20,19 @@ body {
   align-items: center;
 }
 
+.header {
+  text-align: end;
+  width: 100vw;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.header button {
+  width: 120px;
+  flex: 1;
+  font-size: 11pt;
+}
+
 .main {
   display: flex;
   flex: 1;
@@ -33,6 +46,7 @@ body {
   display: flex;
   flex-direction: column;
   background-color: var(--main);
+  transform: scale(1.2);
 }
 
 .calculator input {
@@ -76,21 +90,21 @@ button {
 }
 
 button:hover {
-    cursor: pointer;
-    background-color: var(--btn-dark);
+  cursor: pointer;
+  background-color: var(--btn-dark);
 }
 
 button.operator-btn {
-    background-color: var(--btn-dark);
+  background-color: var(--btn-dark);
 }
 
 button.operator-btn:hover {
-    background-color: var(--btn-light);
+  background-color: var(--btn-light);
 }
 
 button.operator-btn.equal {
-    background-color: var(--highlight);
-    color: var(--btn-dark);
+  background-color: var(--highlight);
+  color: var(--btn-dark);
 }
 
 .footer {
@@ -99,4 +113,9 @@ button.operator-btn.equal {
   text-align: center;
   padding: 15px 0;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
